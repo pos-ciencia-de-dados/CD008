@@ -1,12 +1,8 @@
-## TAREFA 03 - Criação de um Dashboard usando o [Stremlit](https://streamlit.io/)
+import streamlit as st
+from menu_tarefa03 import menu_inicio
 
-Grupo
-* Andre dos Santos Gianini
-* Carlos Eduardo Rodrigues Felix
-* Hermano Albuquerque Lira
-
----
-
+st.title("TAREFA 03 - DASHBOARD STREAMLIT")
+st.markdown(f"""
 ### Objetivo do Trabalho
 
 Em aula vimos vários exemplos de dashboards criadas usando Streamlit.
@@ -18,14 +14,13 @@ Para esta tarefa pedimos que criem um novo exemplo usando Streamlit que mostre:
 
 3. Coloque botões que permitam configurar os mapas para mudarem as informações mostradas nos gráficos.
 
-### Comando para execução do Dashboard
+---
+Professor: joão Comba
+                              
+Grupo
+* Andre dos Santos Gianini
+* Carlos Eduardo Rodrigues Felix
+* Hermano Albuquerque Lira            
+""")
 
-```bash
-streamlit run dashboard_streamlit/app_tarefa03.py
-```
-
-### Referencias ao Streamlit
-
-* [Streamlit Cheat Sheet](https://cheat-sheet.streamlit.app/)
-
-* [Streamlit API](https://docs.streamlit.io/develop/api-reference)
+menu_inicio() # Render the dynamic menu!
