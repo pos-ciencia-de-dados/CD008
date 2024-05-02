@@ -5,3 +5,4 @@ altair
 leafmap
 mapclassify
 geopandas
+wget
