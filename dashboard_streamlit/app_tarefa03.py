@@ -10,7 +10,7 @@ title = st.title("Carregando dataset...")
 # Initialize st.session_state.dataset to None
 if "dataset" not in st.session_state:
     #st.session_state.dataset = None
-    link = "https://github.com/pos-ciencia-de-dados/CD008/raw/master/dataset/PDA_Dados_Cursos_Graduacao_Brasil.zip"
+    link = "https://github.com/pos-ciencia-de-dados/CD008/raw/principal/dataset/PDA_Dados_Cursos_Graduacao_Brasil.zip"
     wget.download(link, "PDA_Dados_Cursos_Graduacao_Brasil.zip")
 
     # loading the .zip and creating a zip object 
