@@ -1,7 +1,27 @@
 import streamlit as st
+import pandas as pd
 from menu_tarefa03 import menu_inicio
+import wget
+from zipfile import ZipFile # importing the zipfile module 
 
-st.title("TAREFA 03 - DASHBOARD STREAMLIT")
+
+title = st.title("Carregando dataset...")
+
+# Initialize st.session_state.dataset to None
+if "dataset" not in st.session_state:
+    #st.session_state.dataset = None
+    link = "https://github.com/pos-ciencia-de-dados/CD008/raw/master/dataset/PDA_Dados_Cursos_Graduacao_Brasil.zip"
+    wget.download(link, "PDA_Dados_Cursos_Graduacao_Brasil.zip")
+
+    # loading the .zip and creating a zip object 
+    with ZipFile("PDA_Dados_Cursos_Graduacao_Brasil.zip", 'r') as zObject: 
+	    # Extracting all the members of the zip 
+	    # into a specific location. 
+	    zObject.extractall(path=".") 
+
+st.session_state.dataset = pd.read_csv("PDA_Dados_Cursos_Graduacao_Brasil.csv")
+
+title.title("TAREFA 03 - DASHBOARD STREAMLIT")
 st.markdown(f"""
 ### Objetivo do Trabalho
 

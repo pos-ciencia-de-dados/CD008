@@ -9,8 +9,7 @@ if "uf" not in st.session_state:
 
 st.title("Gráfico em Barra")
 
-#dataset = pd.read_csv("dashboard_streamlit/dataset/PDA_Dados_Cursos_Graduacao_Brasil.csv")
-dataset = pd.read_csv("https://dadosabertos.mec.gov.br/images/conteudo/Ind-ensino-superior/2022/PDA_Dados_Cursos_Graduacao_Brasil.csv")
+dataset = st.session_state.dataset
 
 # Remove registros com valores NULO
 nordesteDS = dataset.dropna()
