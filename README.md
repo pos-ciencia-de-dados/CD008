@@ -21,7 +21,7 @@ Para esta tarefa pedimos que criem um novo exemplo usando Streamlit que mostre:
 ### Comando para execução do Dashboard
 
 ```bash
-streamlit run dashboard_streamlit/app_tarefa03.py
+streamlit run dashboard_streamlit/app.py
 ```
 
 ### Referencias ao Streamlit

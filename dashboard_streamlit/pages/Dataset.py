@@ -1,5 +1,5 @@
 import streamlit as st
-from menu_tarefa03 import menu_inicio
+from menu import menu_inicio
 
 st.title("Dataset")
 st.markdown(f"""Dados dos cursos de graduação autorizados de todas as universidades do Brasil, por estado e município.

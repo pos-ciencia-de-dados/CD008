@@ -1,36 +1,38 @@
 import streamlit as st
 
+def set_regiao():
+    # Callback function to save the role selection to Session State
+    st.session_state.regiao = st.session_state._regiao
 
-def authenticated_menu():
-    # Show a navigation menu for authenticated users
-    st.sidebar.page_link("app.py", label="Switch accounts")
-    st.sidebar.page_link("pages/user.py", label="Your profile")
-    if st.session_state.role in ["admin", "super-admin"]:
-        st.sidebar.page_link("pages/admin.py", label="Manage users")
-        st.sidebar.page_link(
-            "pages/super-admin.py",
-            label="Manage admin access",
-            disabled=st.session_state.role != "super-admin",
-        )
+def menu_inicio():
+    st.sidebar.page_link("app.py", label="INÍCIO")
+    st.sidebar.markdown("---")
+    
+    st.sidebar.markdown("Gráficos:")
+    st.sidebar.page_link("pages/Barra.py", label="Gráfico em Barra")
+    st.sidebar.page_link("pages/Pizza.py", label="Gráfico de Pizza")
+    st.sidebar.page_link("pages/Linha.py", label="Gráfico de Linha")
+    st.sidebar.page_link("pages/Ponto.py", label="Gráfico de Ponto")
+    
+    st.sidebar.markdown("---")
+    st.sidebar.page_link("pages/Dataset.py", label="Sobre o Dataset")
 
+def menu_barra():
+    # Retrieve the UF from Session State to initialize the widget
+    st.session_state._regiao = st.session_state.regiao
+    st.sidebar.selectbox(
+        "Selecione um Região:",
+        #[None,'AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO','ZZ'],
+        ['SUDESTE', 'NORDESTE', 'SUL', 'CENTRO-OESTE', 'NORTE'],
+        key="_regiao",
+        on_change=set_regiao
+    )
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("Gráficos:")
+    st.sidebar.page_link("pages/Barra.py", label="Gráfico em Barra")
+    st.sidebar.page_link("pages/Pizza.py", label="Gráfico de Pizza")
+    st.sidebar.page_link("pages/Linha.py", label="Gráfico de Linha")
+    st.sidebar.page_link("pages/Ponto.py", label="Gráfico de Ponto")
 
-def unauthenticated_menu():
-    # Show a navigation menu for unauthenticated users
-    st.sidebar.page_link("app.py", label="Log in")
-
-
-def menu():
-    # Determine if a user is logged in or not, then show the correct
-    # navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
-        unauthenticated_menu()
-        return
-    authenticated_menu()
-
-
-def menu_with_redirect():
-    # Redirect users to the main page if not logged in, otherwise continue to
-    # render the navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
-        st.switch_page("app.py")
-    menu()
+    st.sidebar.markdown("---")
+    st.sidebar.page_link("app.py", label="Voltar ao Início")
