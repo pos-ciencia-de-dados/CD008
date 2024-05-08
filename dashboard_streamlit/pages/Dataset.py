@@ -30,4 +30,6 @@ Fonte: [Distribuição dos cursos de graduação pelo Brasil](https://dadosabert
 * Número de atributos: 18
 * Quantidade de registros: 902.676""")
 
+st.dataframe(st.session_state.dataset.head())
+
 menu_inicio() # Render the dynamic menu!

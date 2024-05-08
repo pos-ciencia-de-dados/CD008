@@ -5,34 +5,33 @@ def set_regiao():
     st.session_state.regiao = st.session_state._regiao
 
 def menu_inicio():
-    st.sidebar.page_link("app.py", label="INÍCIO")
+    st.sidebar.page_link("app.py", label=":house: INÍCIO")
     st.sidebar.markdown("---")
     
-    st.sidebar.markdown("Gráficos:")
-    st.sidebar.page_link("pages/Barra.py", label="Gráfico em Barra")
-    st.sidebar.page_link("pages/Pizza.py", label="Gráfico de Pizza")
-    st.sidebar.page_link("pages/Linha.py", label="Gráfico de Linha")
-    st.sidebar.page_link("pages/Ponto.py", label="Gráfico de Ponto")
+    st.sidebar.page_link("pages/IES.py", label="Instituições de Ensino Superior")
+    st.sidebar.page_link("pages/Linha.py", label="Cursos de Graduação")
+    st.sidebar.page_link("pages/Ponto.py", label="Vagas Autorizadas")
     
     st.sidebar.markdown("---")
     st.sidebar.page_link("pages/Dataset.py", label="Sobre o Dataset")
+    st.sidebar.page_link("pages/Sobre.py", label="Sobre esse Trabalho")
 
 def menu_barra():
-    # Retrieve the UF from Session State to initialize the widget
     st.session_state._regiao = st.session_state.regiao
     st.sidebar.selectbox(
         "Selecione um Região:",
         #[None,'AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO','ZZ'],
-        ['SUDESTE', 'NORDESTE', 'SUL', 'CENTRO-OESTE', 'NORTE'],
+        ['TODAS', 'SUDESTE', 'NORDESTE', 'SUL', 'CENTRO-OESTE', 'NORTE'],
         key="_regiao",
         on_change=set_regiao
     )
+    st.sidebar.toggle("Cursos Ativos", False)
+    st.sidebar.multiselect("Selecione a Modalidade", ["Educação a Distância", "Educação Presencial"])
+
     st.sidebar.markdown("---")
-    st.sidebar.markdown("Gráficos:")
-    st.sidebar.page_link("pages/Barra.py", label="Gráfico em Barra")
-    st.sidebar.page_link("pages/Pizza.py", label="Gráfico de Pizza")
-    st.sidebar.page_link("pages/Linha.py", label="Gráfico de Linha")
-    st.sidebar.page_link("pages/Ponto.py", label="Gráfico de Ponto")
+    st.sidebar.page_link("pages/IES.py", label="Instituições de Ensino Superior")
+    st.sidebar.page_link("pages/Linha.py", label="Cursos de Graduação")
+    st.sidebar.page_link("pages/Ponto.py", label="Vagas Autorizadas")
 
     st.sidebar.markdown("---")
     st.sidebar.page_link("app.py", label="Voltar ao Início")
