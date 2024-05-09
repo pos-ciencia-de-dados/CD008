@@ -23,10 +23,11 @@ except FileNotFoundError:
         zObject.extractall(path=".") 
 
 if "dataset" not in st.session_state:
-    title.title("Carregando dataset...")
-    st.session_state.dataset = pd.read_csv("PDA_Dados_Cursos_Graduacao_Brasil.csv")
-    st.session_state.dataset = st.session_state.dataset[st.session_state.dataset['UF'] != 'ZZ']
-
+    title.title("Baixando dataset... COMPLETO!")
+    with st.spinner('Carregando dataset...'):
+        st.session_state.dataset = pd.read_csv("PDA_Dados_Cursos_Graduacao_Brasil.csv")
+        st.session_state.dataset = st.session_state.dataset[st.session_state.dataset['UF'] != 'ZZ']
+    
 title.title("Distribuição de Cursos de Graduação no Brasil")
 
 st.write("Todos os cursos de graduação no Brasil, com informações sobre a modalidade de ensino, categoria administrativa das instituições, e a distribuição geográfica dos cursos.")

@@ -12,6 +12,9 @@ if "ativo" not in st.session_state:
 if "modalidade" not in st.session_state:
     st.session_state.modalidade = "Ambas"
 
+if "grau" not in st.session_state:
+    st.session_state.grau = []
+
 st.title(f"Instituições de Ensino Superior ({st.session_state.regiao})")
 
 if st.session_state.regiao == "TODAS":
@@ -22,19 +25,13 @@ else:
 if st.session_state.ativo == True:
     regiaoDF = regiaoDF[regiaoDF['SITUACAO_CURSO'] == 'Em atividade']
 
-#if len(st.session_state.grau) > 0:
-#    regiaoDF = regiaoDF[regiaoDF['GRAU'] in st.session_state.grau]
-#    for m in st.session_state.modalidade:
-#        if m == "Educação a Distância":
-#            regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == m]
-#
-#        regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == m]
-#        st.write(m)
-
+if len(st.session_state.grau) > 0:
+    regiaoDF = regiaoDF.query('GRAU in ' + str(st.session_state.grau))
+    
 if st.session_state.modalidade != "Ambas":
     regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == st.session_state.modalidade]
 
-tabUF, tabCat, tabMuni, tabCurso, tabMap = st.tabs(["Por Unidade Federativa", "Categorias Administrativas", "Top 10 Municípios", "Top 10 Cursos", "Mapa"])
+tabUF, tabCat, tabMuni, tabCurso, tabMap = st.tabs(["Por Unidade Federativa", "Categorias Administrativas", "Top 10 Municípios", "Top 10 IES com mais cursos", "Mapa"])
 
 with tabUF:
     st.markdown(f"Total de Instituições de Ensino Superior por UF.")

@@ -28,7 +28,6 @@ def menu_barra():
     st.session_state._regiao = st.session_state.regiao
     st.sidebar.selectbox(
         "Selecione uma Região:",
-        #[None,'AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO','ZZ'],
         ['TODAS', 'SUDESTE', 'NORDESTE', 'SUL', 'CENTRO-OESTE', 'NORTE'],
         key="_regiao",
         on_change=set_regiao
@@ -43,7 +42,7 @@ def menu_barra():
 
     st.sidebar.multiselect(
         "Selecione o Grau do Curso",
-        ["Área Básica de Ingresso (ABI)","Bacharelado","Licenciatura","Sequencial","Tecnológico"],
+        ["Área Básica de Ingresso (ABI)","Bacharelado","Licenciatura","Sequencial","Tecnológico"], 
         key="_grau",
         on_change=set_grau
     )
