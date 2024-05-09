@@ -1,4 +1,6 @@
-## TAREFA 03 - Criação de um Dashboard usando o [Stremlit](https://streamlit.io/)
+## [TRABALHO FINAL] Dashboard: Distribuição de Cursos de Graduação no Brasil
+
+Todos os cursos de graduação no Brasil, com informações sobre a modalidade de ensino, categoria administrativa das instituições, e a distribuição geográfica dos cursos.
 
 Grupo
 * Andre dos Santos Gianini
@@ -28,13 +30,24 @@ políticas educacionais, ajudando a identificar áreas de atenção e oportunida
 clara e detalhada do cenário educacional superior, esperamos apoiar os formuladores de políticas, educadores e stakeholders na 
 implementação de melhorias significativas na educação brasileira.
 
-### Comando para execução do Dashboard
+### Instalação das dependências para execução local do Dashboard
+
+```bash
+pip install -r requirements.txt
+```
+
+### Comando para execução local do Dashboard
 
 ```bash
 streamlit run dashboard_streamlit/app.py
 ```
 
-### Referencias ao Streamlit
+### Última versão disponível em
+https://trabalho-final.streamlit.app
+
+### Referências
+
+* [Distribuição dos cursos de graduação pelo Brasil](https://dadosabertos.mec.gov.br/indicadores-sobre-ensino-superior/item/183-cursos-de-graduacao-do-brasil)
 
 * [Streamlit Cheat Sheet](https://cheat-sheet.streamlit.app/)
 
