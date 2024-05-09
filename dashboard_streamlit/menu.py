@@ -17,8 +17,9 @@ def menu_inicio():
     st.sidebar.markdown("---")
     
     st.sidebar.page_link("pages/IES.py", label="Instituições de Ensino Superior")
-    st.sidebar.page_link("pages/Linha.py", label="Cursos de Graduação")
-    st.sidebar.page_link("pages/Ponto.py", label="Vagas Autorizadas")
+#    st.sidebar.page_link("pages/Vagas_Autorizadas.py", label="Vagas Autorizadas pelo MEC")
+#    st.sidebar.page_link("pages/Linha.py", label="[DEPRECATED] Cursos de Graduação")
+#    st.sidebar.page_link("pages/Ponto.py", label="[DEPRECATED] Vagas Autorizadas")
     
     st.sidebar.markdown("---")
     st.sidebar.page_link("pages/Dataset.py", label="Sobre o Dataset")
@@ -56,8 +57,9 @@ def menu_barra():
     
     st.sidebar.markdown("---")
     st.sidebar.page_link("pages/IES.py", label="Instituições de Ensino Superior")
-    st.sidebar.page_link("pages/Linha.py", label="Cursos de Graduação")
-    st.sidebar.page_link("pages/Ponto.py", label="Vagas Autorizadas")
+#    st.sidebar.page_link("pages/Vagas_Autorizadas.py", label="Vagas Autorizadas pelo MEC")
+#    st.sidebar.page_link("pages/Linha.py", label="[DEPRECATED] Cursos de Graduação")
+#    st.sidebar.page_link("pages/Ponto.py", label="[DEPRECATED] Vagas Autorizadas")
 
     st.sidebar.markdown("---")
     st.sidebar.page_link("app.py", label="Voltar ao Início")

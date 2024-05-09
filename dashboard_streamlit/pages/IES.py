@@ -3,6 +3,7 @@ import pandas as pd
 import altair as alt
 from menu import menu_barra
 from pages.Mapa import mostrar_mapa
+from pages.MapaMunicipios import mostrar_mapa_municipios
 
 if "regiao" not in st.session_state:
     st.session_state.regiao = "TODAS"
@@ -32,7 +33,7 @@ if len(st.session_state.grau) > 0:
 if st.session_state.modalidade != "Ambas":
     regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == st.session_state.modalidade]
 
-tabUF, tabCat, tabMuni, tabCurso, tabMap = st.tabs(["Por Unidade Federativa", "Categorias Administrativas", "Top 10 Municípios", "Top 10 IES com mais cursos", "Mapa"])
+tabUF, tabCat, tabMuni, tabCurso, tabMap, tabMapMunicipio = st.tabs(["Por Unidade Federativa", "Categorias Administrativas", "Top 10 Municípios", "Top 10 IES com mais cursos", "Mapa UF's", "Mapa Municípios"])
 
 with tabUF:
     st.markdown(f"Total de Instituições de Ensino Superior por UF.")
@@ -86,5 +87,9 @@ with tabCurso:
 with tabMap:
     mostrar_mapa(regiaoDF)
     
+
+with tabMapMunicipio:
+    mostrar_mapa_municipios(regiaoDF)
+
 menu_barra() # Render the dynamic menu!
 
