@@ -3,9 +3,14 @@ import pandas as pd
 import altair as alt
 from menu import menu_barra
 
-# Initialize st.session_state.regiao to NORDESTE
 if "regiao" not in st.session_state:
     st.session_state.regiao = "TODAS"
+
+if "ativo" not in st.session_state:
+    st.session_state.ativo = False
+
+if "modalidade" not in st.session_state:
+    st.session_state.modalidade = "Ambas"
 
 st.title(f"Instituições de Ensino Superior ({st.session_state.regiao})")
 
@@ -14,13 +19,20 @@ if st.session_state.regiao == "TODAS":
 else:
     regiaoDF = st.session_state.dataset[st.session_state.dataset['REGIAO'] == st.session_state.regiao]
 
-# Mantém apenas os registros onde o valor da colunas 'SITUACAO_CURSO' é 'Em atividade'
-#emAtividadeDS = dataset[dataset['SITUACAO_CURSO'] == 'Em atividade']
+if st.session_state.ativo == True:
+    regiaoDF = regiaoDF[regiaoDF['SITUACAO_CURSO'] == 'Em atividade']
 
-# Mantem apenas cursos de Bacharelado
-#bachareladoDS = emAtividadeDS[emAtividadeDS['GRAU'] == 'Bacharelado']
+#if len(st.session_state.grau) > 0:
+#    regiaoDF = regiaoDF[regiaoDF['GRAU'] in st.session_state.grau]
+#    for m in st.session_state.modalidade:
+#        if m == "Educação a Distância":
+#            regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == m]
+#
+#        regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == m]
+#        st.write(m)
 
-#presencialDS = bachareladoDS[bachareladoDS['MODALIDADE'] == 'Educação Presencial']
+if st.session_state.modalidade != "Ambas":
+    regiaoDF = regiaoDF[regiaoDF['MODALIDADE'] == st.session_state.modalidade]
 
 tabUF, tabCat, tabMuni, tabCurso, tabMap = st.tabs(["Por Unidade Federativa", "Categorias Administrativas", "Top 10 Municípios", "Top 10 Cursos", "Mapa"])
 

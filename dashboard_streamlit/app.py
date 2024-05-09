@@ -36,17 +36,17 @@ st.write("Todos os cursos de graduação no Brasil, com informações sobre a mo
 col1, col2, col3, col4 = st.columns([1, 1, 1, 2])
 
 with col1:
-    st.metric("Total de Registros", st.session_state.dataset.shape[0])
+    st.metric("Total de Registros", '{0:,}'.format(st.session_state.dataset.shape[0]).replace(',', '.'))
 
 with col2:
-    st.metric("Total de IES", st.session_state.dataset['CODIGO_IES'].nunique())
+    st.metric("Total de IES", '{0:,}'.format(st.session_state.dataset['CODIGO_IES'].nunique()).replace(',', '.'))
 
 with col3:
-    st.metric("Total de Cursos", st.session_state.dataset['CODIGO_CURSO'].nunique())
+    st.metric("Total de Cursos", '{0:,}'.format(st.session_state.dataset['CODIGO_CURSO'].nunique()).replace(',', '.'))
     
 with col4:
     listaCursos = st.session_state.dataset.drop(columns=['CODIGO_MUNICIPIO', 'MUNICIPIO', 'UF', 'REGIAO']).drop_duplicates()
-    st.metric("Total de Vagas Autorizadas", listaCursos['QT_VAGAS_AUTORIZADAS'].sum())
+    st.metric("Total de Vagas Autorizadas", '{0:,}'.format(listaCursos['QT_VAGAS_AUTORIZADAS'].sum()).replace(',', '.'))
 
 "---"
 
