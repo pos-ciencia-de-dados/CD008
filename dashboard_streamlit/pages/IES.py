@@ -84,7 +84,7 @@ with tabCurso:
     st.altair_chart(cursoChart, use_container_width=True)
 
 with tabMap:
-    mostrar_mapa()
+    mostrar_mapa(regiaoDF)
     
 menu_barra() # Render the dynamic menu!
 
