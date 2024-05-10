@@ -53,7 +53,9 @@ with tabCat:
 
     catChart = alt.Chart(catDF).mark_bar().encode(
         x=alt.X('CATEGORIA_ADMINISTRATIVA:N', sort='-y'),
-        y='quantidade:Q'
+        y='quantidade:Q',
+        color='REGIAO',
+        tooltip=['REGIAO', 'quantidade']
     )
     st.altair_chart(catChart, use_container_width=True)
 

@@ -9,8 +9,6 @@ geometry = alt.Data(
 )
 
 def mostrar_mapa_municipios(regiaoDF):
-    st.markdown(f"Mapa de Vagas por Município.")
-
     munDF = regiaoDF.groupby(['REGIAO', 'CODIGO_MUNICIPIO'])['QT_VAGAS_AUTORIZADAS'].sum().reset_index(name='quantidade').sort_values(by='quantidade', ascending=False)
     munDF = munDF.rename(columns={'CODIGO_MUNICIPIO':'id'})
 
@@ -31,7 +29,7 @@ def mostrar_mapa_municipios(regiaoDF):
         lookup='properties.id',
         from_=alt.LookupData(munDF, 'id', ['quantidade'])
     ).properties(
-        title='Título',
+        title='Mapa de Vagas por Município.',
         width=800,
         height=600
     )
